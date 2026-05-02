@@ -1,12 +1,45 @@
-# reptor-interretialis
+#######################################
+# 
+#  README.md file for Project:  reptor-interretialis
+#
+######################################
+# Brief discription of the project
+#
+# This appears under TASKS.md file
+#
+#  Table of Contents:
+#  
+#  * Overview
+#  * Features
+#  * Usage
+#  * Configuration info
+#  * License
+#
+######################################
 
-# Nginx config class task
+# Features:
+1. Dockerfile configured to use alpine with nginx
+   clear the conf file and copy the user created one
+2. Docker-compose.yml contain configuration working folder, docker name and port.
+3. nginx_config_generator.sh script in order to enter the domain wanted, and will generate the subdomains.
+4. nginx.conf template exist, this will be updated after running the nginx_config_generator.sh
 
-As part of devops team you are required to setup http service that knows how to redirect url. Dev Team leader reuqires you to use only docker and nginx.
 
-- Create repository under your user name in github named: reptor-interretialis
-    - Create docker file that installs and runs nginx
-    - Create docker compose file that runs created image and mount existing nginx config file
-    - Create nginx config file that enables upstream redirect of existing urls to available servers
-    - Add script that requires user to provide main url that streams to sub-url.(e.g input: mydomain.com -> test.mydomain.com , beta.mydomain.com)
-        - Use all popular sub-domain url streams.
+# Installation
+1. if config file already contain the wanted domain and subdomains please skip to step  4.
+2. if you do not have permissions to run script under scripts folder please run:
+   chmod +x nginx_config_generator.sh
+3. then run the script in scripts folder using: ./nginx_config_generator.sh
+   and the script will prompt you for a domain to enter (e.g mydomain.com) and will update the nginx.conf file accordingally.
+4. then in docker folder please run the following command: 
+   docker compose up -d --build
+5. try and connect to th domain to check (via browser or e.g -> curl http://test.mydomain.com)
+
+
+# Configuration
+1. this works on http only
+2. please configure domain in order to update config file before.
+
+
+# License Info
+This project is licensed under the MIT License - see the LICENSE file for more detailes
