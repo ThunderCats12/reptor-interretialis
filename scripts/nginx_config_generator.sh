@@ -9,7 +9,7 @@ set -o nounset
 set -o pipefail
 ###############################################
 
-BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)" # great work with env vars
 NGINX_CONF="$BASE_DIR/nginx/nginx.conf"
 
 SUBDOMAINS=(
@@ -73,4 +73,4 @@ main() {
 
 
 ##################################3
-main
+main # missing  "$@" so that values can be passed directly to script
