@@ -9,7 +9,7 @@ set -o nounset
 set -o pipefail
 ###############################################
 
-BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)" # great work with env vars
 NGINX_CONF="$BASE_DIR/nginx/nginx.conf"
 
 SUBDOMAINS=(
@@ -69,8 +69,10 @@ main() {
    write_upstream_servers
    write_confblock
    done_message
+   # technically this is correct script and wit will work. the idea is to have ready template and not to work with overriden files, which can become problematic.
+   # --> create config.tmpl file that has all the defained parts, copy to new version with `.config` in name and use sed, awk ang grep to insert/update  all the inserted parts
 }
 
 
 ##################################3
-main
+main # missing  "$@" so that values can be passed directly to script
