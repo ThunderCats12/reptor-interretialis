@@ -9,5 +9,5 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ../nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro # as far as i know docker compose does not allows this did you check ?
     restart: unless-stopped
